@@ -1,6 +1,9 @@
 <script>
   import { onMount } from "svelte";
+  import Card from "./components/Card.svelte";
+  import Heading from "./components/Heading.svelte";
   import { coins } from "./stores/coins";
+  import { numToWords } from "./utils/numToWord";
 
   async function getCoins(currency, limit) {
     let res = await fetch(
@@ -8,7 +11,6 @@
     );
     let data = await res.json();
     $coins = data;
-    console.log(data);
   }
 
   onMount(() => {
@@ -16,7 +18,28 @@
   });
 </script>
 
-{#each $coins as item}
-  <div>{item.name}</div>
-  <span>{item.price}</span>
-{/each}
+<svelte:head>
+  <link
+    href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+    rel="stylesheet"
+  />
+</svelte:head>
+
+<Heading />
+
+<main>
+  <!-- {#each $coins as item}
+    <div>{item.name}</div>
+    <div>
+      {numToWords(item.market_cap)}
+    </div>
+  {/each} -->
+  {#each $coins as item}
+    <Card
+      name={item.name}
+      price={item.price}
+      symmbol={item.id}
+      market_cap={item.market_cap}
+    />
+  {/each}
+</main>
