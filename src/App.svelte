@@ -2,8 +2,10 @@
   import { onMount } from "svelte";
   import Card from "./components/Card.svelte";
   import Heading from "./components/Heading.svelte";
+  import Loading from "./components/Loading.svelte";
   import Navbar from "./components/Navbar.svelte";
-  import { coins, loading, currency, limit } from "./stores/coins";
+  import { coins, currency, limit } from "./stores/coins";
+  import { loading } from "./stores/loading.js";
 
   async function getCoins(currency, limit) {
     $loading = true;
@@ -15,7 +17,6 @@
       $coins = data;
       $loading = false;
     }
-    $loading = true;
   }
   onMount(() => {
     getCoins($currency, $limit);
@@ -28,10 +29,16 @@
     rel="stylesheet"
   />
 </svelte:head>
+
 <div style="padding:.5em; max-width: 700px; min-width: 700px;">
   <Navbar />
+
   <main>
     <Heading />
+
+    {#if $loading}
+      <Loading />
+    {/if}
     {#each $coins as item}
       <Card
         rank={item.rank}

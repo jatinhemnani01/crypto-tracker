@@ -12,7 +12,6 @@
       $coins = data;
       $loading = false;
     }
-    $loading = true;
   }
 </script>
 
