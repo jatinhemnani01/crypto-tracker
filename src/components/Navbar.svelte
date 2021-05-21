@@ -4,7 +4,9 @@
 </script>
 
 <div class="topnav bg-gray-800 text-white flex justify-between item-center">
-  <a class="" href="#home">Donate/Buy Me A Coffee</a>
+  <a target="_blank" class="" href="https://www.buymeacoffee.com/jatinhemnani01"
+    >Donate/Buy Me A Coffee</a
+  >
   <Select />
   <CoinLimit />
 </div>
