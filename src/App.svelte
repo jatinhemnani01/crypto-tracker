@@ -2,7 +2,8 @@
   import { onMount } from "svelte";
   import Card from "./components/Card.svelte";
   import Heading from "./components/Heading.svelte";
-  import { coins, loading } from "./stores/coins";
+  import Navbar from "./components/Navbar.svelte";
+  import { coins, loading, currency, limit } from "./stores/coins";
 
   async function getCoins(currency, limit) {
     $loading = true;
@@ -17,7 +18,7 @@
     $loading = true;
   }
   onMount(() => {
-    getCoins("INR", 20);
+    getCoins($currency, $limit);
   });
 </script>
 
@@ -27,22 +28,17 @@
     rel="stylesheet"
   />
 </svelte:head>
-
-<Heading />
-
-<main>
-  <!-- {#each $coins as item}
-    <div>{item.name}</div>
-    <div>
-      {numToWords(item.market_cap)}
-    </div>
-  {/each} -->
-  {#each $coins as item}
-    <Card
-      name={item.name}
-      price={item.price}
-      symmbol={item.id}
-      market_cap={item.market_cap}
-    />
-  {/each}
-</main>
+<div style="padding:.5em; max-width: 700px; min-width: 700px;">
+  <Navbar />
+  <main>
+    <Heading />
+    {#each $coins as item}
+      <Card
+        rank={item.rank}
+        name={item.name}
+        price={item.price}
+        market_cap={item.market_cap}
+      />
+    {/each}
+  </main>
+</div>
