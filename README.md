@@ -1,4 +1,7 @@
+## [Live Extension](https://addons.mozilla.org/en-US/firefox/addon/crypto-tracker/)
+
 # Crypto Tracker
+
 
 #### Firefox Extension built with Svelte. It's a extension for Firefox(coming for chrome) which let you see Live CryptoCurrency Prices with INR, USD, EUR.
 
