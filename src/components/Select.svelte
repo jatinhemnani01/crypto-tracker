@@ -26,8 +26,8 @@
       getCoins($currency, 20);
     }}
   >
-    <option value="INR" selected>(₹) INR</option>
-    <option value="USD">($) USD</option>
+    <option value="INR">(₹) INR</option>
+    <option value="USD" selected>($) USD</option>
     <option value="EUR">(€) EUR</option>
   </select>
 </div>

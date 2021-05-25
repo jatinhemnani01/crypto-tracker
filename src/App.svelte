@@ -6,7 +6,6 @@
   import Navbar from "./components/Navbar.svelte";
   import { coins, currency, limit } from "./stores/coins";
   import { loading } from "./stores/loading.js";
-
   async function getCoins(currency, limit) {
     $loading = true;
     let res = await fetch(
@@ -32,7 +31,6 @@
 
 <div style="padding:.5em; max-width: 700px; min-width: 700px;">
   <Navbar />
-
   <main>
     <Heading />
 
@@ -41,6 +39,7 @@
     {/if}
     {#each $coins as item}
       <Card
+        img_url={item.logo_url}
         rank={item.rank}
         name={item.name}
         price={item.price}
