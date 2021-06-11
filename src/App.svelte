@@ -6,6 +6,9 @@
   import Navbar from "./components/Navbar.svelte";
   import { coins, currency, limit } from "./stores/coins";
   import { loading } from "./stores/loading.js";
+
+  let search = null;
+  $: filteredList = $coins;
   async function getCoins(currency, limit) {
     $loading = true;
     let res = await fetch(
@@ -17,9 +20,22 @@
       $loading = false;
     }
   }
+
   onMount(() => {
     getCoins($currency, $limit);
   });
+
+  function handleSearch() {
+    filteredList = $coins.filter(
+      (item) =>
+        item.name.toLowerCase().includes(search) ||
+        item.symbol.toLowerCase().includes(search)
+    );
+    console.log(filteredList);
+    if (search.length <= 2 && filteredList.length >= 5) {
+      getCoins($currency, $limit);
+    }
+  }
 </script>
 
 <svelte:head>
@@ -32,12 +48,23 @@
 <div style="padding:.5em;">
   <Navbar />
   <main>
+    <div class="flex p-2 m-2 justify-center bg-gray-700">
+      <!-- svelte-ignore a11y-autofocus -->
+      <input
+        autofocus
+        class="bg-red-300 text-black p-3 rounded font-lg w-60 placeholder-gray-800 font-medium"
+        type="text"
+        on:input={handleSearch}
+        bind:value={search}
+        placeholder="Search Coins"
+      />
+    </div>
     <Heading />
 
     {#if $loading}
       <Loading />
     {/if}
-    {#each $coins as item}
+    {#each filteredList as item}
       <Card
         img_url={item.image}
         rank={item.market_cap_rank}
