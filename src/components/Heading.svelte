@@ -2,7 +2,7 @@
   <th style="flex:.5">Rank</th>
   <th>Name</th>
   <th>Price</th>
-  <th>24H</th>
+  <th>24H %</th>
   <th>Market Cap</th>
 </tr>
 

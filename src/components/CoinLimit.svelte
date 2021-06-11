@@ -5,7 +5,7 @@
   async function getCoins(currency, limit) {
     $loading = true;
     let res = await fetch(
-      `https://api.nomics.com/v1/currencies/ticker?key=e21f86baf43f3392e3d2ebca1f918818&interval=1d,30d&convert=${currency}&per-page=${limit}`
+      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency}&order=market_cap_desc&per_page=${limit}}&page=1&sparkline=false`
     );
     if (res.ok) {
       let data = await res.json();
@@ -27,8 +27,8 @@
     }}
   >
     <option value="10">10</option>
-    <option value="20" selected>20</option>
-    <option value="50">50</option>
+    <option value="20">20</option>
+    <option value="50" selected>50</option>
     <option value="100">100</option>
   </select>
 </div>

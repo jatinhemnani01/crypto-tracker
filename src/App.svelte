@@ -9,7 +9,7 @@
   async function getCoins(currency, limit) {
     $loading = true;
     let res = await fetch(
-      `https://api.nomics.com/v1/currencies/ticker?key=e21f86baf43f3392e3d2ebca1f918818&interval=1d,30d&convert=${currency}&per-page=${limit}`
+      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency}&order=market_cap_desc&per_page=${limit}}&page=1&sparkline=false`
     );
     if (res.ok) {
       let data = await res.json();
@@ -39,11 +39,12 @@
     {/if}
     {#each $coins as item}
       <Card
-        img_url={item.logo_url}
-        rank={item.rank}
+        img_url={item.image}
+        rank={item.market_cap_rank}
         name={item.name}
-        price={item.price}
+        price={item.current_price}
         market_cap={item.market_cap}
+        h24={item.price_change_percentage_24h}
       />
     {/each}
   </main>

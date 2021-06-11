@@ -5,7 +5,7 @@
   async function getCoins(currency, limit) {
     $loading = true;
     let res = await fetch(
-      `https://api.nomics.com/v1/currencies/ticker?key=e21f86baf43f3392e3d2ebca1f918818&interval=1d,30d&convert=${currency}&per-page=${limit}`
+      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency}&order=market_cap_desc&per_page=${limit}}&page=1&sparkline=false`
     );
     if (res.ok) {
       let data = await res.json();
@@ -23,7 +23,7 @@
     bind:value={selected}
     on:change={() => {
       $currency = selected;
-      getCoins($currency, 20);
+      getCoins($currency, 50);
     }}
   >
     <option value="INR">(₹) INR</option>
