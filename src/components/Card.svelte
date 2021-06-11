@@ -1,4 +1,5 @@
 <script>
+  import { fly } from "svelte/transition";
   import { numToWords } from "../utils/numToWord";
   import commaNumber from "comma-number";
   import { currency } from "../stores/coins";
@@ -11,7 +12,10 @@
   $: currencySymbol = "$";
 </script>
 
-<tr class="bg-gray-700 text-white p-2 text-base hover:bg-gray-800">
+<tr
+  transition:fly={{ y: 200, duration: 400, delay: 400 }}
+  class="bg-gray-700 text-white p-2 text-base hover:bg-gray-800"
+>
   <td style="flex:.5">{rank}</td>
   <span><img class="w-7" src={img_url} alt={name} /></span>
   <td>{name}</td>
