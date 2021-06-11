@@ -1,3 +1,4 @@
+## [Web App](https://coin-tracker-svelte.netlify.app/)
 ## [Live Extension](https://addons.mozilla.org/en-US/firefox/addon/crypto-tracker/)
 
 # Crypto Tracker
