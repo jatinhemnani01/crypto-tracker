@@ -7,6 +7,7 @@
   export let price;
   export let market_cap;
   export let rank;
+  export let h24;
   $: currencySymbol = "$";
 
   function getCurrencySymbol() {
@@ -32,6 +33,7 @@
   {:else if $currency === "EUR"}
     <td>{(currencySymbol = "€")}{commaNumber(price)}</td>
   {/if}
+  <td>{h24}</td>
   <td>{numToWords(market_cap)}</td>
 </tr>
 

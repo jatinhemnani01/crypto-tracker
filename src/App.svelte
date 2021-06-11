@@ -29,7 +29,7 @@
   />
 </svelte:head>
 
-<div style="padding:.5em; max-width: 700px; min-width: 700px;">
+<div style="padding:.5em;">
   <Navbar />
   <main>
     <Heading />
