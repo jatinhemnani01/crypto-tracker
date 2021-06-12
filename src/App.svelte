@@ -31,7 +31,6 @@
         item.name.toLowerCase().includes(search) ||
         item.symbol.toLowerCase().includes(search)
     );
-    console.log(filteredList);
     if (search.length <= 2 && filteredList.length >= 5) {
       getCoins($currency, $limit);
     }
@@ -51,7 +50,6 @@
     <div class="flex p-2 m-2 justify-center bg-gray-700">
       <!-- svelte-ignore a11y-autofocus -->
       <input
-        autofocus
         class="bg-red-300 text-black p-3 rounded font-lg w-60 placeholder-gray-800 font-medium"
         type="text"
         on:input={handleSearch}
