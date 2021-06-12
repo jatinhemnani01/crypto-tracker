@@ -13,7 +13,8 @@
 </script>
 
 <tr
-  transition:fly={{ y: 200, duration: 400, delay: 400 }}
+  on:click
+  transition:fly={{ y: 200, duration: 400, delay: 500 }}
   class="bg-gray-700 text-white p-2 text-base hover:bg-gray-800"
 >
   <td style="flex:.5">{rank}</td>
